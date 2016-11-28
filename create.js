@@ -35,9 +35,7 @@ flow
     do: data => {
       console.log(data.add_item);
       let range = data.add_item.updates.updatedRange;
-      let rowNumber = +range.match(/A(\d+):\w+\d+/)[1];
-      if (!rowNumber) throw new Error("Couldn't match row number:" + range);
-      flow.params.id = rowNumber;
+      flow.params.id = spreadsheet.getRowFromRange(range);
       flow.succeed(flow.params);
     }
   })
