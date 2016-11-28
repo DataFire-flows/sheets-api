@@ -15,4 +15,8 @@ spreadsheet.fields = [{
   regex: /^(dog|cat|gerbil)?$/,
 }];
 
+spreadsheet.getColumn = idx => {
+  if (idx >= 26) return spreadsheet.getColumn(Math.floor(idx / 26) - 1) + spreadsheet.getColumn(idx % 26)
+  return String.fromCharCode(idx + 65);
+}
 
