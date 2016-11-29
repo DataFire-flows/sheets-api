@@ -33,7 +33,8 @@ datafire call google-sheets \
   --as default
 
 # spreadsheetId: abcd
-# title: Pet Store
+# properties:
+#   title: Pet Store
 # ...
 ```
 
