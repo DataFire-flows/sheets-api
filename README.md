@@ -58,6 +58,7 @@ You can use [Serverless](https://github.com/serverless/serverless) to
 deploy your API to AWS. Edit `serverless.yml` to control which endpoints
 are exposed:
 
+```yaml 
 functions:
   create:
     handler: create.handler
@@ -74,3 +75,4 @@ functions:
       - http:
           method: get
           path: pets/{id}
+```
