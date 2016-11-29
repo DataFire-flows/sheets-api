@@ -34,7 +34,6 @@ flow
   })
   .step('succeed', {
     do: data => {
-      console.log(data.add_item);
       let range = data.add_item.updates.updatedRange;
       flow.params.id = spreadsheet.getRowFromRange(range);
       flow.succeed(flow.params);
