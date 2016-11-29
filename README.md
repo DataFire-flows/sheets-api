@@ -48,10 +48,29 @@ While you're in `spreadsheet.js`, you can edit the fields available and the
 regexen that validate them.
 
 ## Running
-
-Try adding an item:
-
 ```
-datafire run addItem -p.name Lucy -p.age 2 -p.animal_type dog
+datafire run create -p.name Lucy -p.age 2 -p.animal_type dog
+datafire run retrieve
 ```
 
+### Serverless
+You can use [Serverless](https://github.com/serverless/serverless) to
+deploy your API to AWS. Edit `serverless.yml` to control which endpoints
+are exposed:
+
+functions:
+  create:
+    handler: create.handler
+    events:
+      - http:
+          method: post
+          path: pets
+  retrieve:
+    handler: retrieve.handler
+    events:
+      - http:
+          method: get
+          path: pets
+      - http:
+          method: get
+          path: pets/{id}
