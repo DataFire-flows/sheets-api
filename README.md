@@ -9,12 +9,12 @@ npm install -g datafire
 ```
 
 To register a Google Sheets client, visit
-[console.developers.google.com](https://console.developers.google.com/apis/credentials)
+[console.developers.google.com](https://console.developers.google.com/apis/api/sheets.googleapis.com/overview)
 * click "Enable API"
-* choose Sheets
 * click "Credentials"
 * click "Create Credentials" -> "OAuth Client ID"
-* add http://localhost:3000 as a Callback URL
+* Choose "web application"
+* add `http://localhost:3000` as an "Authorized redirect URI"
 
 Now run:
 ```
@@ -30,27 +30,57 @@ Run this command, replacing "Pet Store" with your title
 datafire call google-sheets \
   -o sheets.spreadsheets.create \
   --p.body='{"properties": {"title": "Pet Store"}}' \
-  --as sheets
+  --as default
 
 # spreadsheetId: abcd
-# title: Pet Store
+# properties:
+#   title: Pet Store
 # ...
 ```
 
-Copy the spreadsheetId and paste it into spreadsheet.js:
+Copy `spreadsheetId` and paste it into `spreadsheet.js`:
 
 ```
-spreadsheet.id="1LnVeld2tvZw1K9DxnNVHEzJhpQBfT5c2qZpeufiAcQo";
+spreadsheet.id="abcd";
 ```
 
-While you're in spreadsheet.js, you can edit the fields available and the
+While you're in `spreadsheet.js`, you can edit the fields available and the
 regexen that validate them.
 
 ## Running
-
-Try adding an item:
-
 ```
-datafire run addItem -p.name Lucy -p.age 2 -p.animal_type dog
+datafire run create -p.name Lucy -p.age 2 -p.animal_type dog
+datafire run retrieve
 ```
 
+### Serverless
+You can use [Serverless](https://github.com/serverless/serverless) to
+deploy your API to AWS. Edit `serverless.yml` to control which endpoints
+are exposed:
+
+```yaml 
+functions:
+  create:
+    handler: create.handler
+    events:
+      - http:
+          method: post
+          path: pets
+  retrieve:
+    handler: retrieve.handler
+    events:
+      - http:
+          method: get
+          path: pets
+      - http:
+          method: get
+          path: pets/{id}
+```
+
+
+```
+curl -X POST "https://id.execute-api.us-east-1.amazonaws.com/dev/pets" \
+    -d '{"name": "Lucy", "age": 2}'
+    
+curl "https://id.execute-api.us-east-1.amazonaws.com/dev/pets"
+```
