@@ -14,7 +14,7 @@ To register a Google Sheets client, visit
 * click "Credentials"
 * click "Create Credentials" -> "OAuth Client ID"
 * Choose "web application"
-* add http://localhost:3000 as an "Authorized redirect URI"
+* add `http://localhost:3000` as an "Authorized redirect URI"
 
 Now run:
 ```
