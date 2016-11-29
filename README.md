@@ -38,13 +38,13 @@ datafire call google-sheets \
 # ...
 ```
 
-Copy the spreadsheetId and paste it into spreadsheet.js:
+Copy `spreadsheetId` and paste it into `spreadsheet.js`:
 
 ```
 spreadsheet.id="abcd";
 ```
 
-While you're in spreadsheet.js, you can edit the fields available and the
+While you're in `spreadsheet.js`, you can edit the fields available and the
 regexen that validate them.
 
 ## Running
