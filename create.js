@@ -11,6 +11,7 @@ flow
     do: data => {
       spreadsheet.fields.forEach(field => {
         let value = flow.params[field.key] || '';
+        if (typeof value === 'number') value = value.toString();
         if (field.regex && !value.match(field.regex)) {
           flow.fail(400, field.key + " must match " + field.regex);
         }
