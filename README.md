@@ -30,7 +30,7 @@ Run this command, replacing "Pet Store" with your title
 datafire call google-sheets \
   -o sheets.spreadsheets.create \
   --p.body='{"properties": {"title": "Pet Store"}}' \
-  --as sheets
+  --as default
 
 # spreadsheetId: abcd
 # title: Pet Store
@@ -40,7 +40,7 @@ datafire call google-sheets \
 Copy the spreadsheetId and paste it into spreadsheet.js:
 
 ```
-spreadsheet.id="1LnVeld2tvZw1K9DxnNVHEzJhpQBfT5c2qZpeufiAcQo";
+spreadsheet.id="abcd";
 ```
 
 While you're in spreadsheet.js, you can edit the fields available and the
