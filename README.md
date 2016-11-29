@@ -82,5 +82,5 @@ functions:
 curl -X POST "https://id.execute-api.us-east-1.amazonaws.com/dev/pets" \
     -d '{"name": "Lucy", "age": 2}'
     
-curl "https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets"
+curl "https://id.execute-api.us-east-1.amazonaws.com/dev/pets"
 ```
