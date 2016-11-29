@@ -9,12 +9,12 @@ npm install -g datafire
 ```
 
 To register a Google Sheets client, visit
-[console.developers.google.com](https://console.developers.google.com/apis/credentials)
+[console.developers.google.com](https://console.developers.google.com/apis/api/sheets.googleapis.com/overview)
 * click "Enable API"
-* choose Sheets
 * click "Credentials"
 * click "Create Credentials" -> "OAuth Client ID"
-* add http://localhost:3000 as a Callback URL
+* Choose "web application"
+* add http://localhost:3000 as an "Authorized redirect URI"
 
 Now run:
 ```
