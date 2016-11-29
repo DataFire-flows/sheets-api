@@ -1,0 +1,28 @@
+service: sheets-backed-api
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+
+stages:
+  prod:
+    vars:
+      bucketname: prod
+
+functions:
+  create:
+    handler: create.handler
+    events:
+      - http:
+          method: post
+          path: pets
+  retrieve:
+    handler: retrieve.handler
+    events:
+      - http:
+          method: get
+          path: pets
+      - http:
+          method: get
+          path: pets/{id}
+
