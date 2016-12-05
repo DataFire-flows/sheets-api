@@ -28,7 +28,7 @@ datafire authenticate google-sheets --generate_token
 Run this command, replacing "Pet Store" with your title
 ```
 datafire call google-sheets \
-  -o sheets.spreadsheets.create \
+  -o spreadsheets.create \
   --p.body='{"properties": {"title": "Pet Store"}}' \
   --as default
 
