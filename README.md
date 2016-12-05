@@ -3,7 +3,7 @@
 ## Setup
 First clone and install
 ```
-git clone https://github.com/DataFire/sheets-backed-api && cd sheets-backed-api
+git clone https://github.com/DataFire-flows/sheets-api && cd sheets-api
 npm install
 npm install -g datafire
 ```
