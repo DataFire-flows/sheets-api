@@ -1,4 +1,6 @@
 # Create an API backed by Google Sheets
+Use this repo to create a quick-and-dirty API that will store data in Google Sheets.
+The API can run out of the box on AWS Lambda.
 
 ## Setup
 First clone and install
