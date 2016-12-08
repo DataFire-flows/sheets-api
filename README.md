@@ -82,14 +82,6 @@ functions:
           path: pets/{id}
 ```
 
-
-```
-curl -X POST "https://id.execute-api.us-east-1.amazonaws.com/dev/pets" \
-    -d '{"name": "Lucy", "age": 2}'
-    
-curl "https://id.execute-api.us-east-1.amazonaws.com/dev/pets"
-```
-
 ## Creating a Google Sheets client
 To register a Google Sheets client, visit
 [console.developers.google.com](https://console.developers.google.com/apis/api/sheets.googleapis.com/overview)
