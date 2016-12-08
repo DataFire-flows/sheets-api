@@ -3,13 +3,14 @@ Use this repo to create a quick-and-dirty API that will store data in Google She
 The API can be easily run on AWS Lambda with API Gateway.
 
 ## Demo
-A demo is deployed on AWS. You can see the data here:
-https://docs.google.com/spreadsheets/d/12l8GpqPRbweYf-1DApcp3lBJ-btpA8yTr2GCMnZ1FQY/edit?usp=sharing
+A demo is deployed on AWS. You can see the data
+[on Google Sheets](https://docs.google.com/spreadsheets/d/12l8GpqPRbweYf-1DApcp3lBJ-btpA8yTr2GCMnZ1FQY/edit?usp=sharing)
 
-View pets:
+Or via the API:
+#### View pets
 https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets
 
-Add a pet:
+#### Add a pet
 ```
 curl -X POST -d '{"name": "Lucy", "age": 2}' \
     https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets 
