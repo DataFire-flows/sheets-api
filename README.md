@@ -49,7 +49,7 @@ spreadsheet.id="abcd";
 ```
 
 ## Modify the API
-The field names and validation regexen are all in `spreadsheet.js`. You can modify
+The field names and validation regexen are all in [spreadsheet.js](./spreadsheet.js). You can modify
 that file to change the API.
 
 ## Running
