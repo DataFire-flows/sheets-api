@@ -29,6 +29,7 @@ flow.step('pets', {
     return {
       spreadsheetId: spreadsheet.id,
       ranges: ranges,
+      valueRenderOption: 'UNFORMATTED_VALUE',
     }
   },
   finish: data => {

@@ -25,7 +25,7 @@ flow
       return {
         spreadsheetId: spreadsheet.id,
         range: 'A1:A' + spreadsheet.fields.length,
-        valueInputOption: 'RAW',
+        valueInputOption: 'USER_ENTERED',
         body: {
           values: [row],
         }
