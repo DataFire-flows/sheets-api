@@ -8,23 +8,10 @@ First clone and install
 git clone https://github.com/DataFire-flows/sheets-api && cd sheets-api
 npm install
 npm install -g datafire serverless
-```
-
-To register a Google Sheets client, visit
-[console.developers.google.com](https://console.developers.google.com/apis/api/sheets.googleapis.com/overview)
-* click "Enable API"
-* click "Credentials"
-* click "Create Credentials" -> "OAuth Client ID"
-* Choose "web application"
-* add `http://localhost:3000` as an "Authorized redirect URI"
-
-Now run:
-```
-datafire integrate google-sheets
 datafire authenticate google-sheets --generate_token
-# Copy your client_id and client_secret generated above,
-# then visit the URL generated
 ```
+
+See below for instructions on getting your Google Sheets credentials
 
 ### Create a new sheet
 Run this command, replacing "Pet Store" with your title
@@ -86,3 +73,12 @@ curl -X POST "https://id.execute-api.us-east-1.amazonaws.com/dev/pets" \
     
 curl "https://id.execute-api.us-east-1.amazonaws.com/dev/pets"
 ```
+
+## Creating a Google Sheets client
+To register a Google Sheets client, visit
+[console.developers.google.com](https://console.developers.google.com/apis/api/sheets.googleapis.com/overview)
+* click "Enable API"
+* click "Credentials"
+* click "Create Credentials" -> "OAuth Client ID"
+* Choose "web application"
+* add `http://localhost:3000` as an "Authorized redirect URI"
