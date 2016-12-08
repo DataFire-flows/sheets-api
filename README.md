@@ -14,7 +14,8 @@ datafire authenticate google-sheets --generate_token
 See below for instructions on getting your Google Sheets credentials
 
 ### Create a new sheet
-Run this command, replacing "Pet Store" with your title
+You can manually create a new sheet at sheets.google.com, or 
+run this command, replacing "Pet Store" with your title
 ```
 datafire call google-sheets \
   -o spreadsheets.create \
@@ -27,7 +28,7 @@ datafire call google-sheets \
 # ...
 ```
 
-Copy `spreadsheetId` and paste it into `spreadsheet.js`:
+Copy `spreadsheetId` from the response (or the sheets.google.com URL) and paste it into `spreadsheet.js`:
 
 ```
 spreadsheet.id="abcd";
