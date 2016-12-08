@@ -25,7 +25,8 @@ npm install -g datafire serverless
 datafire authenticate google-sheets --generate_token
 ```
 
-See below for instructions on getting your Google Sheets credentials
+[See below](https://github.com/DataFire-flows/sheets-api#creating-a-google-sheets-client)
+for instructions on getting your Google Sheets credentials
 
 ### Create a new sheet
 You can manually create a new sheet at sheets.google.com, or 
