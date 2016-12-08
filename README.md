@@ -48,8 +48,9 @@ Copy `spreadsheetId` from the response (or the sheets.google.com URL) and paste 
 spreadsheet.id="abcd";
 ```
 
-While you're in `spreadsheet.js`, you can edit the fields available and the
-regexen that validate them.
+## Modify the API
+The field names and validation regexen are all in `spreadsheet.js`. You can modify
+that file to change the API.
 
 ## Running
 ```
