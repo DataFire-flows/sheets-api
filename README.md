@@ -5,8 +5,7 @@ The API can be easily run on AWS Lambda with API Gateway.
 ## Demo
 A demo is deployed on AWS. You can see the data
 [on Google Sheets](https://docs.google.com/spreadsheets/d/12l8GpqPRbweYf-1DApcp3lBJ-btpA8yTr2GCMnZ1FQY/edit?usp=sharing)
-
-Or via the API:
+or via the API:
 #### View pets
 https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets
 
