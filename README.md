@@ -7,7 +7,10 @@ A demo is deployed on AWS. You can see the data
 [on Google Sheets](https://docs.google.com/spreadsheets/d/12l8GpqPRbweYf-1DApcp3lBJ-btpA8yTr2GCMnZ1FQY/edit?usp=sharing)
 or via the API:
 #### View pets
-https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets
+```
+curl https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets
+curl https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets?page=2
+```
 
 #### Add a pet
 ```
