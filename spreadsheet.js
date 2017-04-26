@@ -5,14 +5,18 @@ let spreadsheet = module.exports = {};
 spreadsheet.id="12l8GpqPRbweYf-1DApcp3lBJ-btpA8yTr2GCMnZ1FQY";
 
 spreadsheet.fields = [{
-  key: 'name',
-  regex: /^\w{2,30}$/,
+  title: 'name',
+  type: 'string',
+  pattern: "^\\w{2,30}$",
 }, {
-  key: 'age',
-  regex: /^\d+$/,
+  title: 'age',
+  type: 'integer',
+  minimum: 0,
 }, {
-  key: 'animal_type',
-  regex: /^(dog|cat|gerbil)?$/,
+  title: 'animal_type',
+  type: 'string',
+  enum: ['', 'dog', 'cat', 'gerbil'],
+  default: '',
 }];
 
 spreadsheet.getColumn = idx => {

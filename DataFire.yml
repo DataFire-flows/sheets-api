@@ -1,0 +1,10 @@
+paths:
+  /pets:
+    get:
+      action: ./retrieve
+    post:
+      action: ./create
+  /pets/{id}:
+    get:
+      action: ./retrieve
+

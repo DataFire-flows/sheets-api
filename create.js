@@ -2,40 +2,32 @@
 
 let datafire = require('datafire');
 let spreadsheet = require('./spreadsheet');
-let sheets = datafire.Integration.new('google-sheets').as('default');
+let sheets = require('@datafire/google_sheets').actions;
+let retrieve = require('./retrieve');
 
-let flow = module.exports = new datafire.Flow('Create a Pet');
-
-flow
-  .step('check_input', {
-    do: data => {
-      spreadsheet.fields.forEach(field => {
-        let value = flow.params[field.key] || '';
-        if (typeof value === 'number') value = value.toString();
-        if (field.regex && !value.match(field.regex)) {
-          flow.fail(400, field.key + " must match " + field.regex);
-        }
+module.exports = new datafire.Action({
+  inputs: spreadsheet.fields,
+  handler: (input, context) => {
+    context.accounts.google_sheets = context.accounts.sheetsOwner;
+    let row = spreadsheet.fields.map(f => input[f.title]);
+    return datafire.flow(context)
+      .then(_ => {
+        return sheets.spreadsheets.values.append.run({
+          spreadsheetId: spreadsheet.id,
+          range: 'A1:A' + spreadsheet.fields.length,
+          valueInputOption: 'USER_ENTERED',
+          body: {
+            values: [row],
+          }
+        }, context)
       })
-    }
-  })
-  .step('add_item', {
-    do: sheets.post('/v4/spreadsheets/{spreadsheetId}/values/{range}:append'),
-    params: data => {
-      let row = spreadsheet.fields.map(f => flow.params[f.key])
-      return {
-        spreadsheetId: spreadsheet.id,
-        range: 'A1:A' + spreadsheet.fields.length,
-        valueInputOption: 'USER_ENTERED',
-        body: {
-          values: [row],
-        }
-      }
-    }
-  })
-  .step('succeed', {
-    do: data => {
-      let range = data.add_item.updates.updatedRange;
-      flow.params.id = spreadsheet.getRowFromRange(range);
-      flow.succeed(flow.params);
-    }
-  })
+      .then(item => {
+        let range = item.updates.updatedRange;
+        let id = spreadsheet.getRowFromRange(range);
+        return id;
+      })
+      .then(id => {
+        return retrieve.run({id}, context);
+      })
+  }
+})
