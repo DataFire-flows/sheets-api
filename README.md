@@ -62,6 +62,11 @@ curl -X POST -d '{"name": "Lucy", "age": 2}' \
     http://localhost:3000/pets
 ```
 
+#### Stop the server
+```
+kill $!
+```
+
 ## Modify the API
 The field names and validation info are all in [spreadsheet.js](./spreadsheet.js). You can modify
 that file to change the API.
