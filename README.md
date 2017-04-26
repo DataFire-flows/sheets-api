@@ -36,7 +36,7 @@ datafire run google_sheets/spreadsheets.create \
 Copy `spreadsheetId` from the response (or the sheets.google.com URL) and paste it into `spreadsheet.js`:
 
 ```js
-spreadsheet.id="abcd";
+spreadsheet.id = "abcd";
 ```
 
 ## Running
