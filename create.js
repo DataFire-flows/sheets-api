@@ -12,7 +12,7 @@ module.exports = new datafire.Action({
     let row = spreadsheet.fields.map(f => input[f.title]);
     return datafire.flow(context)
       .then(_ => {
-        return sheets.spreadsheets.values.append.run({
+        return sheets.spreadsheets.values.append({
           spreadsheetId: spreadsheet.id,
           range: 'A1:A' + spreadsheet.fields.length,
           valueInputOption: 'USER_ENTERED',
@@ -27,7 +27,7 @@ module.exports = new datafire.Action({
         return id;
       })
       .then(id => {
-        return retrieve.run({id}, context);
+        return retrieve({id}, context);
       })
   }
 })

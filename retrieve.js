@@ -46,7 +46,7 @@ module.exports = new datafire.Action({
           ranges.push('A' + i + ':' + lastCol + i);
         }
         context.accounts.google_sheets = context.accounts.sheetsOwner;
-        return sheets.spreadsheets.values.batchGet.run({
+        return sheets.spreadsheets.values.batchGet({
             spreadsheetId: spreadsheet.id,
             ranges: ranges,
             valueRenderOption: 'UNFORMATTED_VALUE',
