@@ -5,7 +5,8 @@
   "main": "create.js",
   "dependencies": {
     "@datafire/google-sheets": "0.0.3",
-    "datafire": "^1.3.3"
+    "@datafire/google_sheets": "^2.0.0",
+    "datafire": "^2.0.2"
   },
   "devDependencies": {},
   "scripts": {
