@@ -1,43 +1,31 @@
 # Create an API backed by Google Sheets
 Use this repo to create a quick-and-dirty API that will store data in Google Sheets.
-The API can be easily run on AWS Lambda with API Gateway.
-
-## Demo
-A demo is deployed on AWS. You can see the data
-[on Google Sheets](https://docs.google.com/spreadsheets/d/12l8GpqPRbweYf-1DApcp3lBJ-btpA8yTr2GCMnZ1FQY/edit?usp=sharing)
-or via the API:
-#### View pets
-```
-curl https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets
-curl https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets?page=2
-```
-
-#### Add a pet
-```
-curl -X POST -d '{"name": "Lucy", "age": 2}' \
-    https://l5aqavmoah.execute-api.us-east-1.amazonaws.com/dev/pets 
-```
 
 ## Setup
 First clone and install
 ```
 git clone https://github.com/DataFire-flows/sheets-api && cd sheets-api
 npm install
-npm install -g datafire serverless
-datafire authenticate google-sheets --generate_token
+npm install -g datafire
 ```
 
+### Authenticate
+Use `datafire authenticate` to add your credentials.
 [See below](https://github.com/DataFire-flows/sheets-api#creating-a-google-sheets-client)
 for instructions on getting your Google Sheets credentials
 
+```
+datafire authenticate google_sheets
+# Set the alias to sheetsOwner
+```
+
 ### Create a new sheet
-You can manually create a new sheet at sheets.google.com, or 
+You can manually create a new sheet at sheets.google.com, or
 run this command, replacing "Pet Store" with your title
 ```
-datafire call google-sheets \
-  -o spreadsheets.create \
-  --p.body='{"properties": {"title": "Pet Store"}}' \
-  --as default
+datafire run google_sheets/spreadsheets.create \
+  --input.body.properties.title "Pet Store" \
+  --accounts.google_sheets sheetsOwner
 
 # spreadsheetId: abcd
 # properties:
@@ -47,43 +35,43 @@ datafire call google-sheets \
 
 Copy `spreadsheetId` from the response (or the sheets.google.com URL) and paste it into `spreadsheet.js`:
 
+```js
+spreadsheet.id = "abcd";
 ```
-spreadsheet.id="abcd";
+
+## Running
+Start the server with `datafire serve`:
+```
+datafire serve --port 3000 &
+```
+#### View pets
+```
+# Get the first 10 results
+curl http://localhost:3000/pets
+
+# Get the second page
+curl http://localhost:3000/pets?page=2
+
+# Get pet #12
+curl http://localhost:3000/pets/12
+```
+
+#### Add a pet
+```
+curl -X POST -d '{"name": "Lucy", "age": 2}' \
+    http://localhost:3000/pets
+```
+
+#### Stop the server
+```
+kill $!
 ```
 
 ## Modify the API
-The field names and validation regexen are all in [spreadsheet.js](./spreadsheet.js). You can modify
+The field names and validation info are all in [spreadsheet.js](./spreadsheet.js). You can modify
 that file to change the API.
 
-## Running
-```
-datafire run create -p.name Lucy -p.age 2 -p.animal_type dog
-datafire run retrieve
-```
-
-### Serverless
-You can use [Serverless](https://github.com/serverless/serverless) to
-deploy your API to AWS. Edit `serverless.yml` to control which endpoints
-are exposed:
-
-```yaml 
-functions:
-  create:
-    handler: create.handler
-    events:
-      - http:
-          method: post
-          path: pets
-  retrieve:
-    handler: retrieve.handler
-    events:
-      - http:
-          method: get
-          path: pets
-      - http:
-          method: get
-          path: pets/{id}
-```
+You can also change the URL from `/pets` to something new by editing DataFire.yml.
 
 ## Creating a Google Sheets client
 To register a Google Sheets client, visit
