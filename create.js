@@ -27,7 +27,7 @@ module.exports = new datafire.Action({
         return id;
       })
       .then(id => {
-        return retrieve({id}, context);
+        return retrieve.run({id}, context);
       })
   }
 })
