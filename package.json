@@ -4,7 +4,6 @@
   "description": "Use this repo to create a quick-and-dirty API that will store data in Google Sheets. The API can be easily run on AWS Lambda with API Gateway.",
   "main": "create.js",
   "dependencies": {
-    "@datafire/google-sheets": "0.0.3",
     "@datafire/google_sheets": "^2.0.0",
     "datafire": "^2.0.2"
   },
