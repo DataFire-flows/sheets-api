@@ -15,8 +15,7 @@ Use `datafire authenticate` to add your credentials.
 for instructions on getting your Google Sheets credentials
 
 ```
-datafire authenticate google_sheets
-# Set the alias to sheetsOwner
+datafire authenticate google_sheets --alias sheetsOwner
 ```
 
 ### Create a new sheet
